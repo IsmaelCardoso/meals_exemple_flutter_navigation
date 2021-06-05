@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals_exemple_flutter_navigation/utils/app_routes.dart';
+import '../utils/app_routes.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget _createIconItem({
