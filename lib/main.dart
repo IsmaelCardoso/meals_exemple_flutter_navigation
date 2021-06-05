@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+
 import 'screens/settings_screen.dart';
 import 'screens/categories_meals_screen.dart';
 import 'screens/meal_detail_screen.dart';
 import 'screens/tabs_screen.dart';
-import 'utils/app_routes_util.dart';
 
 import 'utils/app_routes_util.dart';
+
 import 'models/settings_model.dart';
 import 'models/meal_model.dart';
+
 import 'data/dummy_data.dart';
 
 main() => runApp(MyApp());
@@ -18,17 +20,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Settings settings = Settings();
   List<Meal> _availableMeals = DUMMY_MEALS;
 
   void _filterMeals(Settings settings) {
     setState(() {
-      _availableMeals = DUMMY_MEALS.where((meal) {
-        final filterGluten = meal.isGlutenFree && settings.isGlutenFree;
-        final filterLactose = meal.isLactoseFree && settings.isLactoseFree;
-        final filterVegan = meal.isVegan && settings.isVegan;
-        final filterVegetarian = meal.isVegetarian && meal.isVegetarian;
+      this.settings = settings;
 
-        return filterGluten && filterLactose && filterVegan && filterVegetarian;
+      _availableMeals = DUMMY_MEALS.where((meal) {
+        final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
+        final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
+        final filterVegan = settings.isVegan && !meal.isVegan;
+        final filterVegetarian = settings.isVegetarian && !meal.isVegetarian;
+
+        return !filterGluten &&
+            !filterLactose &&
+            !filterVegan &&
+            !filterVegetarian;
       }).toList();
     });
   }
@@ -63,7 +71,8 @@ class _MyAppState extends State<MyApp> {
         AppRoutes.CATEGORIES_MEALS: (context) =>
             CategoriesMealsScreen(_availableMeals),
         AppRoutes.MEAL_DETAIL: (context) => MealDetailScreen(),
-        AppRoutes.SETTINGS: (context) => SettingsScreen(_filterMeals),
+        AppRoutes.SETTINGS: (context) =>
+            SettingsScreen(settings: settings, onSettingsChanged: _filterMeals),
       },
       // onGenerateInitialRoutes: (settings) {
       //   if (settings.name == '/something') {

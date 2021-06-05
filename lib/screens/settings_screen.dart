@@ -3,16 +3,23 @@ import '../models/settings_model.dart';
 import '../widgets/main_drawer_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
+  final Settings settings;
   final Function(Settings) onSettingsChanged;
 
-  const SettingsScreen(this.onSettingsChanged);
+  const SettingsScreen({this.settings, this.onSettingsChanged});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  var settings = Settings();
+  Settings settings;
+
+  @override
+  void initState() {
+    super.initState();
+    settings = widget.settings;
+  }
 
   Widget _createWchitch({
     String title,
