@@ -19,6 +19,8 @@ class CategoriesMealsScreen extends StatelessWidget {
         )
         .toList();
 
+    print(['meals: ', meals]);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(category.title),
