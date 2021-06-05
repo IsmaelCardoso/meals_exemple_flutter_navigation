@@ -5,9 +5,20 @@ import 'screens/meal_detail_screen.dart';
 import 'screens/tabs_screen.dart';
 import 'utils/app_routes_util.dart';
 
+import './utils/app_routes_util.dart';
+import './models/meal_model.dart';
+import './data/dummy_data.dart';
+
 main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Meal> _availableMeals = DUMMY_MEALS;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,7 +46,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         AppRoutes.HOME: (context) => TabScreen(),
-        AppRoutes.CATEGORIES_MEALS: (context) => CategoriesMealsScreen(),
+        AppRoutes.CATEGORIES_MEALS: (context) =>
+            CategoriesMealsScreen(_availableMeals),
         AppRoutes.MEAL_DETAIL: (context) => MealDetailScreen(),
         AppRoutes.SETTINGS: (context) => SettingsScreen(),
       },
