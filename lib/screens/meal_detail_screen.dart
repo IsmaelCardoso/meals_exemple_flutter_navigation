@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/meal.dart';
+import '../models/meal_model.dart';
 
 class MealDetailScreen extends StatelessWidget {
   Widget _createSectionTitle({BuildContext context, String title}) {

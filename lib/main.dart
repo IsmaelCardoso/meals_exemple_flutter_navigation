@@ -3,7 +3,7 @@ import 'screens/settings_screen.dart';
 import 'screens/categories_meals_screen.dart';
 import 'screens/meal_detail_screen.dart';
 import 'screens/tabs_screen.dart';
-import './utils/app_routes.dart';
+import 'utils/app_routes_util.dart';
 
 main() => runApp(MyApp());
 

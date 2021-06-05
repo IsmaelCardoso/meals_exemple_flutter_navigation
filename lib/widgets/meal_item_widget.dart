@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_exemple_flutter_navigation/utils/app_routes.dart';
-import '../models/meal.dart';
+import 'package:meals_exemple_flutter_navigation/utils/app_routes_util.dart';
+import '../models/meal_model.dart';
 
 class MealItem extends StatelessWidget {
   final Meal meal;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/settings.dart';
-import '../widgets/main_drawer.dart';
+import '../models/settings_model.dart';
+import '../widgets/main_drawer_widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
